@@ -4,7 +4,7 @@ HEADER = 64
 PORT = 5050
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
-SERVER = "192.168.56.1"#socket.gethostbyname(socket.gethostname())
+SERVER = socket.gethostbyname(socket.gethostname())
 ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -16,8 +16,13 @@ def send(msg):
     msg_length = len(message)
     send_length = str(msg_length).encode(FORMAT) # kodujemy długość jako string
     send_length += b' ' * (HEADER - len(send_length))
-    client.send(send_length)
-    client.send(msg)
+    client.sendall(send_length)
+    client.sendall(msg.encode(FORMAT))
     print(client.recv(2048).decode(FORMAT))
 
-send('Hello!')
+send(input())
+send(input())
+send(input())
+send(input())
+send(input())
+

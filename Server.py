@@ -5,7 +5,7 @@ import threading
 # będzie normalna (nie poprzedzająca wiadomość) jaką klient nam wysyła
 HEADER = 64
 PORT = 5050
-SERVER = "192.168.56.1" # Wyciągamy lokalny adres IPv4
+SERVER = socket.gethostbyname(socket.gethostname()) #"192.168.56.1" # Wyciągamy lokalny adres IPv4
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
